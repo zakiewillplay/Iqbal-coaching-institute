@@ -1,0 +1,1610 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Iqbal Coaching Institute | Excellence Since 2005</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Fraunces:ital,opsz,wght@0,9..144,400;0,9..144,600;0,9..144,700;1,9..144,500&family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+    <style>
+        :root {
+            --navy: #10254a;
+            --navy-deep: #0a1a35;
+            --navy-soft: #1c3a6e;
+            --gold: #c89b3c;
+            --gold-light: #e8cc86;
+            --cream: #faf6ee;
+            --paper: #fffdf9;
+            --ink: #232b3a;
+            --ink-soft: #5a6172;
+            --line: #e7e1d3;
+            --radius: 16px;
+        }
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;
+            scroll-behavior: smooth;
+        }
+
+        body {
+            color: var(--ink);
+            line-height: 1.65;
+            background: var(--cream);
+        }
+
+        h1,
+        h2,
+        h3,
+        h4,
+        .display {
+            font-family: 'Fraunces', Georgia, serif;
+            letter-spacing: -0.01em;
+        }
+
+        ::selection {
+            background: var(--gold-light);
+            color: var(--navy-deep);
+        }
+
+        .mobile-bar {
+            display: none;
+            position: fixed;
+            bottom: 0;
+            left: 0;
+            width: 100%;
+            background: var(--navy-deep);
+            color: white;
+            z-index: 998;
+            padding: 10px 0;
+            justify-content: space-around;
+            align-items: center;
+            box-shadow: 0 -6px 20px rgba(0, 0, 0, 0.25);
+        }
+
+        .mobile-bar a {
+            color: white;
+            text-decoration: none;
+            font-weight: 600;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            font-size: 13px;
+            gap: 2px;
+        }
+
+        .mobile-bar a span {
+            font-size: 18px;
+        }
+
+        @media (max-width: 768px) {
+            .mobile-bar {
+                display: flex;
+            }
+        }
+
+        header {
+            background: var(--navy-deep);
+            color: white;
+            padding: 0.7rem 2rem;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            position: sticky;
+            top: 0;
+            z-index: 100;
+            border-bottom: 1px solid rgba(200, 155, 60, 0.25);
+        }
+
+        .logo-area {
+            display: flex;
+            align-items: center;
+            gap: 0.9rem;
+        }
+
+        .logo-img {
+            height: 48px;
+            width: 48px;
+            background: white;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-weight: bold;
+            color: var(--navy);
+            font-size: 1.2rem;
+            overflow: hidden;
+            border: 2px solid var(--gold);
+            flex-shrink: 0;
+        }
+
+        .logo-img img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+        }
+
+        .institute-name {
+            font-family: 'Fraunces', serif;
+            font-size: 1.25rem;
+            font-weight: 600;
+            line-height: 1.2;
+        }
+
+        .institute-name span {
+            display: block;
+            font-family: 'Inter', sans-serif;
+            font-size: 0.72rem;
+            font-weight: 500;
+            letter-spacing: 0.03em;
+            color: var(--gold-light);
+            margin-top: 2px;
+        }
+
+        .hamburger {
+            display: flex;
+            flex-direction: column;
+            justify-content: space-around;
+            width: 28px;
+            height: 22px;
+            background: transparent;
+            border: none;
+            cursor: pointer;
+            padding: 0;
+            z-index: 101;
+            flex-shrink: 0;
+        }
+
+        .hamburger .bar {
+            width: 100%;
+            height: 2.5px;
+            background: white;
+            border-radius: 3px;
+            transition: all 0.3s ease;
+        }
+
+        .hamburger.active .bar:nth-child(1) {
+            transform: rotate(45deg) translate(6px, 6px);
+        }
+        .hamburger.active .bar:nth-child(2) {
+            opacity: 0;
+        }
+        .hamburger.active .bar:nth-child(3) {
+            transform: rotate(-45deg) translate(6px, -6px);
+        }
+
+        nav {
+            display: none;
+            width: 100%;
+            background: var(--navy-deep);
+            position: absolute;
+            top: 100%;
+            left: 0;
+            padding: 1rem 2rem 1.4rem;
+            flex-direction: column;
+            gap: 0.3rem;
+            box-shadow: 0 10px 24px rgba(0, 0, 0, 0.25);
+        }
+
+        nav.active {
+            display: flex;
+        }
+
+        nav a {
+            color: white;
+            text-decoration: none;
+            font-weight: 500;
+            padding: 0.6rem 0;
+            border-bottom: 1px solid rgba(255, 255, 255, 0.12);
+            font-size: 0.95rem;
+        }
+
+        nav a:hover {
+            color: var(--gold-light);
+        }
+
+        .hero {
+            background: radial-gradient(ellipse at top, var(--navy-soft) 0%, var(--navy-deep) 60%, #081227 100%);
+            color: white;
+            text-align: center;
+            padding: 4.5rem 1.5rem 3rem;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .hero .motif {
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            width: 900px;
+            height: 900px;
+            transform: translate(-50%, -50%);
+            opacity: 0.16;
+            z-index: 0;
+            pointer-events: none;
+        }
+
+        .hero>* {
+            position: relative;
+            z-index: 1;
+        }
+
+        .eyebrow {
+            display: inline-block;
+            font-size: 0.75rem;
+            font-weight: 700;
+            letter-spacing: 0.18em;
+            text-transform: uppercase;
+            color: var(--gold-light);
+            border: 1px solid rgba(232, 204, 134, 0.4);
+            padding: 0.35rem 0.9rem;
+            border-radius: 999px;
+            margin-bottom: 1.4rem;
+        }
+
+        .hero h1 {
+            font-size: clamp(2rem, 4.5vw, 3rem);
+            font-weight: 600;
+            font-style: italic;
+            max-width: 780px;
+            margin: 0 auto 0.6rem;
+            line-height: 1.25;
+        }
+
+        .hero .motto {
+            font-size: 1.05rem;
+            color: var(--gold-light);
+            margin-bottom: 1.6rem;
+            letter-spacing: 0.02em;
+        }
+
+        .news-ticker {
+            display: flex;
+            align-items: stretch;
+            max-width: 780px;
+            margin: 0 auto 1.8rem;
+            background: rgba(255, 255, 255, 0.07);
+            border: 1px solid rgba(232, 204, 134, 0.3);
+            border-radius: 999px;
+            overflow: hidden;
+            backdrop-filter: blur(6px);
+        }
+
+        .news-ticker .tag {
+            flex-shrink: 0;
+            background: var(--gold);
+            color: var(--navy-deep);
+            font-weight: 800;
+            font-size: 0.72rem;
+            letter-spacing: 0.08em;
+            text-transform: uppercase;
+            padding: 0.55rem 1.1rem;
+            display: flex;
+            align-items: center;
+            gap: 0.35rem;
+        }
+
+        .news-ticker .tag .dot {
+            width: 7px;
+            height: 7px;
+            border-radius: 50%;
+            background: #d32f2f;
+            display: inline-block;
+            animation: pulse 1.6s infinite;
+        }
+
+        @keyframes pulse {
+            0%,
+            100% {
+                opacity: 1;
+            }
+            50% {
+                opacity: 0.25;
+            }
+        }
+
+        .news-ticker .track-wrap {
+            flex: 1;
+            overflow: hidden;
+            position: relative;
+            display: flex;
+            align-items: center;
+        }
+
+        .news-ticker .track {
+            display: inline-flex;
+            white-space: nowrap;
+            animation: scroll-left 28s linear infinite;
+            padding-left: 100%;
+        }
+
+        .news-ticker .track:hover {
+            animation-play-state: paused;
+        }
+
+        .news-ticker .track .item {
+            padding: 0.55rem 2.5rem 0.55rem 0;
+            font-size: 0.9rem;
+            color: #fff;
+        }
+
+        .news-ticker .track .item .date {
+            color: var(--gold-light);
+            font-weight: 700;
+            margin-right: 0.5rem;
+        }
+
+        @keyframes scroll-left {
+            0% {
+                transform: translateX(0);
+            }
+            100% {
+                transform: translateX(-100%);
+            }
+        }
+
+        .hero p.lead {
+            font-size: 1.08rem;
+            max-width: 680px;
+            margin: 0 auto 1.8rem;
+            opacity: 0.88;
+        }
+
+        .counter-box {
+            background: rgba(255, 255, 255, 0.08);
+            border: 1px solid rgba(232, 204, 134, 0.25);
+            border-radius: var(--radius);
+            padding: 1.4rem 2.2rem;
+            display: inline-block;
+            margin-top: 0.5rem;
+            backdrop-filter: blur(5px);
+        }
+
+        .counter-box .number {
+            font-family: 'Fraunces', serif;
+            font-size: 3.2rem;
+            font-weight: 700;
+            color: var(--gold-light);
+            line-height: 1;
+        }
+
+        .counter-box .label {
+            font-size: 0.92rem;
+            color: white;
+            opacity: 0.85;
+            margin-top: 0.3rem;
+        }
+
+        .btn {
+            display: inline-block;
+            background: var(--gold);
+            color: var(--navy-deep);
+            padding: 0.85rem 2rem;
+            border: none;
+            border-radius: 999px;
+            font-size: 0.95rem;
+            font-weight: 700;
+            cursor: pointer;
+            text-decoration: none;
+            transition: background 0.3s, transform 0.2s, box-shadow 0.3s;
+            margin: 0.4rem;
+            box-shadow: 0 8px 20px rgba(200, 155, 60, 0.25);
+        }
+
+        .btn:hover {
+            background: var(--gold-light);
+            transform: translateY(-2px);
+        }
+
+        .btn-outline {
+            background: transparent;
+            border: 1.5px solid rgba(255, 255, 255, 0.6);
+            color: white;
+            box-shadow: none;
+        }
+
+        .btn-outline:hover {
+            background: white;
+            color: var(--navy-deep);
+        }
+
+        section {
+            padding: 4.5rem 2rem;
+            max-width: 1200px;
+            margin: 0 auto;
+        }
+
+        .eyebrow-center {
+            display: block;
+            text-align: center;
+            font-size: 0.72rem;
+            font-weight: 700;
+            letter-spacing: 0.16em;
+            text-transform: uppercase;
+            color: var(--gold);
+            margin-bottom: 0.6rem;
+        }
+
+        .section-title {
+            text-align: center;
+            font-size: clamp(1.7rem, 3vw, 2.3rem);
+            font-weight: 600;
+            margin-bottom: 2.6rem;
+            color: var(--navy);
+            position: relative;
+        }
+
+        .section-title::after {
+            content: '';
+            width: 60px;
+            height: 3px;
+            background: var(--gold);
+            display: block;
+            margin: 0.6rem auto 0;
+            border-radius: 2px;
+        }
+
+        .about-grid {
+            display: flex;
+            gap: 2.5rem;
+            align-items: center;
+            flex-wrap: wrap;
+        }
+
+        .about-text {
+            flex: 1 1 400px;
+            color: var(--ink-soft);
+        }
+
+        .about-text strong {
+            color: var(--ink);
+        }
+
+        .founder-card {
+            flex: 1 1 300px;
+            background: var(--paper);
+            padding: 2rem;
+            border-radius: 20px;
+            text-align: center;
+            border: 1px solid var(--line);
+            box-shadow: 0 12px 30px rgba(16, 37, 74, 0.06);
+        }
+
+        .founder-card img {
+            width: 120px;
+            height: 120px;
+            border-radius: 50%;
+            object-fit: cover;
+            border: 4px solid var(--gold);
+            margin-bottom: 1rem;
+        }
+
+        .founder-card h4 {
+            color: var(--navy);
+            font-size: 1.15rem;
+        }
+
+        .usp-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
+            gap: 1.6rem;
+            margin-top: 2rem;
+        }
+
+        .usp-card {
+            background: var(--paper);
+            padding: 1.8rem;
+            border-radius: 14px;
+            border-left: 3px solid var(--gold);
+            border-top: 1px solid var(--line);
+            border-right: 1px solid var(--line);
+            border-bottom: 1px solid var(--line);
+            transition: all 0.3s;
+        }
+
+        .usp-card:hover {
+            box-shadow: 0 14px 28px rgba(16, 37, 74, 0.08);
+            transform: translateY(-3px);
+        }
+
+        .usp-card h4 {
+            color: var(--navy);
+            margin-bottom: 0.5rem;
+            font-size: 1.05rem;
+            font-weight: 600;
+        }
+
+        .usp-card p {
+            color: var(--ink-soft);
+            font-size: 0.95rem;
+        }
+
+        .course-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(270px, 1fr));
+            gap: 2rem;
+        }
+
+        .course-card {
+            background: var(--paper);
+            border: 1px solid var(--line);
+            border-radius: 18px;
+            padding: 2rem;
+            transition: 0.3s;
+        }
+
+        .course-card:hover {
+            transform: translateY(-6px);
+            box-shadow: 0 20px 34px rgba(16, 37, 74, 0.1);
+            border-color: transparent;
+        }
+
+        .course-card h3 {
+            color: var(--navy);
+            margin-bottom: 1rem;
+            font-size: 1.25rem;
+            font-weight: 600;
+        }
+
+        .course-card ul {
+            list-style: none;
+            padding: 0;
+            color: var(--ink-soft);
+        }
+
+        .course-card ul li {
+            padding: 0.25rem 0;
+        }
+
+        .course-card ul li::before {
+            content: '✓ ';
+            color: #2e7d32;
+            font-weight: bold;
+        }
+
+        .faculty-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(180px, 1fr));
+            gap: 2rem;
+            text-align: center;
+        }
+
+        .faculty-card img {
+            width: 96px;
+            height: 96px;
+            border-radius: 50%;
+            object-fit: cover;
+            background: #e0e0e0;
+            margin-bottom: 0.8rem;
+            border: 3px solid var(--gold-light);
+        }
+
+        .faculty-card h4 {
+            color: var(--navy);
+            font-size: 0.98rem;
+            font-weight: 600;
+        }
+
+        .faculty-card p {
+            color: var(--ink-soft);
+            font-size: 0.85rem;
+        }
+
+        .testimonial-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+            gap: 2rem;
+        }
+
+        .testimonial-card {
+            background: var(--paper);
+            padding: 2rem;
+            border-radius: 16px;
+            border: 1px solid var(--line);
+            border-top: 3px solid var(--gold);
+        }
+
+        .testimonial-card p {
+            color: var(--ink-soft);
+        }
+
+        .stars {
+            color: var(--gold);
+            margin-bottom: 0.8rem;
+        }
+
+        .faq-item {
+            background: var(--paper);
+            border: 1px solid var(--line);
+            border-radius: 12px;
+            margin-bottom: 1rem;
+            overflow: hidden;
+        }
+
+        .faq-question {
+            background: #f4f0e4;
+            padding: 1.1rem 1.3rem;
+            font-weight: 600;
+            cursor: pointer;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            color: var(--navy);
+        }
+
+        .faq-answer {
+            padding: 0 1.3rem;
+            max-height: 0;
+            overflow: hidden;
+            color: var(--ink-soft);
+            transition: max-height 0.3s ease, padding 0.3s ease;
+        }
+
+        .faq-item.active .faq-answer {
+            max-height: 200px;
+            padding: 1.1rem 1.3rem;
+        }
+
+        .gallery-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+            gap: 1rem;
+        }
+
+        .gallery-item {
+            background: #e5e0d3;
+            height: 180px;
+            border-radius: 12px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: #8a8272;
+            overflow: hidden;
+        }
+
+        .gallery-item img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+        }
+
+        .contact-container {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 2rem;
+        }
+
+        .contact-info {
+            flex: 1 1 300px;
+            background: var(--navy-deep);
+            color: white;
+            padding: 2.2rem;
+            border-radius: 18px;
+        }
+
+        .contact-info h3 {
+            color: white !important;
+        }
+        .contact-info p {
+            color: rgba(255, 255, 255, 0.85);
+        }
+
+        .contact-form {
+            flex: 1 1 300px;
+            background: var(--paper);
+            padding: 2.2rem;
+            border-radius: 18px;
+            border: 1px solid var(--line);
+        }
+
+        .form-group {
+            margin-bottom: 1.1rem;
+        }
+
+        .form-group label {
+            font-weight: 600;
+            color: var(--navy);
+            display: block;
+            margin-bottom: 0.3rem;
+            font-size: 0.9rem;
+        }
+
+        .form-group input,
+        .form-group select,
+        .form-group textarea {
+            width: 100%;
+            padding: 0.7rem;
+            border: 1px solid #d6d0c2;
+            border-radius: 8px;
+            font-size: 1rem;
+            background: white;
+        }
+
+        .form-group input:focus,
+        .form-group select:focus,
+        .form-group textarea:focus {
+            outline: 2px solid var(--gold);
+            outline-offset: 1px;
+        }
+
+        .submit-btn {
+            background: var(--navy);
+            color: white;
+            border: none;
+            padding: 0.9rem;
+            width: 100%;
+            border-radius: 8px;
+            font-weight: bold;
+            cursor: pointer;
+        }
+
+        .submit-btn:hover {
+            background: var(--navy-soft);
+        }
+
+        footer {
+            background: var(--navy-deep);
+            color: rgba(255, 255, 255, 0.8);
+            text-align: center;
+            padding: 2rem;
+            margin-top: 2rem;
+            font-size: 0.9rem;
+        }
+
+        footer a {
+            color: var(--gold-light);
+            text-decoration: none;
+        }
+
+        .fade-in {
+            opacity: 0;
+            transform: translateY(30px);
+            transition: opacity 0.6s ease, transform 0.6s ease;
+        }
+
+        .fade-in.visible {
+            opacity: 1;
+            transform: translateY(0);
+        }
+
+        .social-links {
+            margin: 1.5rem 0;
+            display: flex;
+            gap: 1rem;
+            align-items: center;
+            flex-wrap: wrap;
+        }
+
+        .social-link {
+            display: inline-flex;
+            align-items: center;
+            gap: 0.4rem;
+            padding: 0.5rem 1.2rem;
+            border-radius: 30px;
+            font-weight: 600;
+            font-size: 0.9rem;
+            text-decoration: none;
+            color: white;
+            transition: all 0.3s ease;
+            box-shadow: 0 2px 6px rgba(0, 0, 0, 0.1);
+        }
+
+        .social-link svg {
+            width: 20px;
+            height: 20px;
+            fill: white;
+            transition: transform 0.3s;
+        }
+
+        .social-link:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 4px 12px rgba(0, 0, 0, 0.15);
+        }
+
+        .social-link.youtube {
+            background: #FF0000;
+        }
+
+        .social-link.instagram {
+            background: linear-gradient(45deg, #f09433, #e6683c, #dc2743, #cc2366, #bc1888);
+        }
+
+        .social-link:hover svg {
+            transform: scale(1.1);
+        }
+
+        @media (max-width: 600px) {
+            .social-link {
+                padding: 0.4rem 0.8rem;
+                font-size: 0.8rem;
+            }
+            .social-link svg {
+                width: 18px;
+                height: 18px;
+            }
+        }
+
+        .chatbot-toggle {
+            position: fixed;
+            bottom: 100px;
+            right: 20px;
+            width: 58px;
+            height: 58px;
+            border-radius: 50%;
+            background: var(--navy);
+            color: white;
+            border: 2px solid var(--gold);
+            cursor: pointer;
+            font-size: 26px;
+            box-shadow: 0 6px 18px rgba(0, 0, 0, 0.25);
+            z-index: 1000;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            transition: transform 0.3s;
+        }
+        .chatbot-toggle:hover {
+            transform: scale(1.08);
+        }
+
+        .chatbot-window {
+            position: fixed;
+            bottom: 170px;
+            right: 20px;
+            width: 340px;
+            max-width: 90vw;
+            height: 450px;
+            background: white;
+            border-radius: 16px;
+            box-shadow: 0 10px 34px rgba(0, 0, 0, 0.2);
+            display: none;
+            flex-direction: column;
+            overflow: hidden;
+            z-index: 1000;
+            border: 1px solid var(--line);
+        }
+        .chatbot-window.open {
+            display: flex;
+        }
+
+        .chatbot-header {
+            background: var(--navy-deep);
+            color: white;
+            padding: 1rem;
+            font-weight: bold;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+        .chatbot-header button {
+            background: none;
+            border: none;
+            color: white;
+            font-size: 1.5rem;
+            cursor: pointer;
+        }
+
+        .chatbot-messages {
+            flex: 1;
+            padding: 1rem;
+            overflow-y: auto;
+            background: #f9f7f1;
+            display: flex;
+            flex-direction: column;
+            gap: 0.8rem;
+        }
+
+        .chatbot-message {
+            max-width: 85%;
+            padding: 0.7rem 1rem;
+            border-radius: 12px;
+            font-size: 0.9rem;
+            line-height: 1.4;
+        }
+        .bot-message {
+            background: #eee9db;
+            align-self: flex-start;
+        }
+        .user-message {
+            background: var(--navy);
+            color: white;
+            align-self: flex-end;
+        }
+
+        .chatbot-suggestions {
+            display: flex;
+            align-items: center;
+            border-top: 1px solid var(--line);
+            background: white;
+            padding: 0.5rem 0;
+        }
+
+        .suggestions-slider {
+            flex: 1;
+            overflow-x: auto;
+            white-space: nowrap;
+            display: flex;
+            gap: 0.5rem;
+            padding: 0 0.5rem;
+            scrollbar-width: none;
+            -ms-overflow-style: none;
+        }
+        .suggestions-slider::-webkit-scrollbar {
+            display: none;
+        }
+
+        .suggestions-slider button {
+            flex: 0 0 auto;
+            background: #f4f0e4;
+            border: 1px solid var(--navy);
+            color: var(--navy);
+            padding: 0.4rem 0.8rem;
+            border-radius: 20px;
+            font-size: 0.75rem;
+            cursor: pointer;
+            transition: 0.2s;
+            white-space: nowrap;
+        }
+        .suggestions-slider button:hover {
+            background: var(--navy);
+            color: white;
+        }
+
+        .slider-arrow {
+            background: none;
+            border: none;
+            font-size: 1.2rem;
+            cursor: pointer;
+            padding: 0 0.3rem;
+            color: var(--navy);
+            flex: 0 0 auto;
+        }
+        .slider-arrow:hover {
+            color: var(--gold);
+        }
+
+        .chatbot-input-area {
+            display: flex;
+            border-top: 1px solid var(--line);
+            padding: 0.5rem;
+            background: white;
+        }
+        .chatbot-input-area input {
+            flex: 1;
+            border: 1px solid #ccc;
+            border-radius: 20px;
+            padding: 0.5rem 1rem;
+            font-size: 0.9rem;
+            outline: none;
+        }
+        .chatbot-input-area button {
+            background: var(--gold);
+            color: var(--navy-deep);
+            border: none;
+            border-radius: 20px;
+            padding: 0.5rem 1rem;
+            margin-left: 0.5rem;
+            font-weight: bold;
+            cursor: pointer;
+        }
+
+        @media (prefers-reduced-motion: reduce) {
+            .news-ticker .track {
+                animation: none;
+            }
+            .fade-in {
+                opacity: 1;
+                transform: none;
+                transition: none;
+            }
+        }
+
+        @media (max-width: 600px) {
+            .hero h1 {
+                font-size: 1.7rem;
+            }
+            header {
+                padding: 0.8rem 1rem;
+            }
+            .institute-name {
+                font-size: 1.05rem;
+            }
+            .institute-name span {
+                font-size: 0.68rem;
+            }
+            .logo-img {
+                height: 40px;
+                width: 40px;
+                font-size: 1rem;
+            }
+            .chatbot-window {
+                width: 90vw;
+                right: 5vw;
+                bottom: 160px;
+            }
+            .news-ticker .tag span.tag-text {
+                display: none;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="mobile-bar">
+        <a href="tel:+919419088099"><span>📞</span> Call</a>
+        <a href="https://wa.me/919419088099" target="_blank"><span>💬</span> WhatsApp</a>
+        <a href="#contact"><span>📝</span> Enquire</a>
+    </div>
+
+    <button class="chatbot-toggle" id="chatbotToggle" title="Ask a question">💬</button>
+
+    <div class="chatbot-window" id="chatbotWindow">
+        <div class="chatbot-header">
+            <span>🤖 ICI Assistant</span>
+            <button id="chatbotClose">✕</button>
+        </div>
+        <div class="chatbot-messages" id="chatbotMessages">
+            <div class="chatbot-message bot-message">
+                Hello! 👋 I'm here to answer your questions. Swipe through suggestions or type a question.
+            </div>
+        </div>
+        <div class="chatbot-suggestions">
+            <button class="slider-arrow" id="scrollLeft">‹</button>
+            <div class="suggestions-slider" id="suggestionsSlider"><button data-key="timings">Class timings?</button><button data-key="demo">Demo classes?</button><button data-key="online support">Online support?</button><button data-key="fees">Fee structure?</button><button data-key="contact">Contact details?</button><button data-key="address">Address?</button></div>
+            <button class="slider-arrow" id="scrollRight">›</button>
+        </div>
+        <div class="chatbot-input-area">
+            <input type="text" id="chatbotInput" placeholder="Type your question...">
+            <button id="chatbotSend">Send</button>
+        </div>
+    </div>
+
+    <header>
+        <div class="logo-area">
+            <div class="logo-img">
+                <img src="https://i.ibb.co/fYT0cswB/iqbal-coaching-institute-parimpora-srinagar-tutorials-ssfam1add0.jpg" alt="Iqbal Coaching Institute Logo">
+            </div>
+            <div class="institute-name">
+                Iqbal Coaching Institute
+                <span>Serving students with excellence since 2005</span>
+            </div>
+        </div>
+
+        <button class="hamburger" id="hamburger" aria-label="Menu">
+            <span class="bar"></span>
+            <span class="bar"></span>
+            <span class="bar"></span>
+        </button>
+
+        <nav id="nav-menu">
+            <a href="#home">Home</a>
+            <a href="#about">About</a>
+            <a href="#courses">Courses</a>
+            <a href="#faculty">Faculty</a>
+            <a href="#testimonials">Results</a>
+            <a href="#faq">FAQ</a>
+            <a href="#contact">Contact</a>
+        </nav>
+    </header>
+
+    <section id="home" class="hero">
+        <svg class="motif" viewBox="0 0 200 200" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
+            <circle cx="100" cy="100" r="30" fill="none" stroke="#e8cc86" stroke-width="0.6"></circle>
+            <circle cx="100" cy="100" r="55" fill="none" stroke="#e8cc86" stroke-width="0.4"></circle>
+            <circle cx="100" cy="100" r="80" fill="none" stroke="#e8cc86" stroke-width="0.3"></circle>
+            <g stroke="#e8cc86" stroke-width="0.5">
+                <line x1="100" y1="5" x2="100" y2="35"></line>
+                <line x1="100" y1="165" x2="100" y2="195"></line>
+                <line x1="5" y1="100" x2="35" y2="100"></line>
+                <line x1="165" y1="100" x2="195" y2="100"></line>
+                <line x1="29" y1="29" x2="50" y2="50"></line>
+                <line x1="150" y1="150" x2="171" y2="171"></line>
+                <line x1="29" y1="171" x2="50" y2="150"></line>
+                <line x1="150" y1="50" x2="171" y2="29"></line>
+            </g>
+        </svg>
+        <span class="eyebrow">Parimpora · Srinagar · Est. 2005</span>
+        <h1>"Know Thyself, Self‑Realization is Half Done"</h1>
+        <div class="motto">— Iqbal Coaching Institute, Parimpora</div>
+
+        <div class="news-ticker" id="newsTicker">
+            <div class="tag"><span class="dot"></span><span class="tag-text">Latest&nbsp;News</span></div>
+            <div class="track-wrap">
+                <div class="track" id="newsTrack"><span class="item">Connect a Google Sheet above to show live news here.</span><span class="item">Admissions open for the 2026–27 session — enquire now.</span><span class="item">Weekly mock test series continues every Saturday.</span><span class="item">Connect a Google Sheet above to show live news here.</span><span class="item">Admissions open for the 2026–27 session — enquire now.</span><span class="item">Weekly mock test series continues every Saturday.</span></div>
+            </div>
+        </div>
+
+        <p class="lead">Academic excellence through personal mentorship, test series, doubt sessions, and counselling. Proudly coaching 8th to 12th (Arts &amp; Commerce) since 2005.</p>
+        <div class="counter-box fade-in visible">
+            <div class="number" id="counter">49+</div>
+            <div class="label">Students scored 400+ in boards</div>
+        </div>
+        <div style="margin-top:2rem;">
+            <a href="#contact" class="btn">Enquire Now</a>
+            <a href="tel:+919419088099" class="btn btn-outline">Call Us</a>
+        </div>
+    </section>
+
+    <section id="about">
+        <span class="eyebrow-center">Our Story</span>
+        <div class="section-title">Story &amp; Philosophy</div>
+        <div class="about-grid fade-in visible">
+            <div class="about-text">
+                <p><strong>Founded in 2005 by Mohammad Iqbal Lone</strong>, Iqbal Coaching Institute (ICI) started in Parimpora with a mission: education as self-discovery, not just facts. We blend rigorous academics with holistic development, ensuring every student finds confidence and clarity.</p>
+                <p style="margin-top:1rem;">Our motto drives us: <em>"Know thyself, self-realization is half done."</em> With 20+ years of experience, dedicated faculty, and a community-focused environment, we've become a trusted name in Srinagar.</p>
+            </div>
+            <div class="founder-card">
+                <img src="https://i.ibb.co/MyTMYyx6/IMG-20260705-WA0033-1.jpg" alt="Founder">
+                <h4>Mohammad Iqbal Lone</h4>
+                <p>Founder &amp; Director</p>
+                <p style="font-size:0.9rem; font-style:italic; color:var(--ink-soft);">"Education as self-discovery, not just facts."</p>
+            </div>
+            <div class="founder-card">
+                <img src="https://i.ibb.co/8LctSqr1/IMG-20260705-WA0034.jpg" alt="Coordinator">
+                <h4>Musadiq Rehman Sofi</h4>
+                <p>Coordinator</p>
+                <p style="font-size:0.9rem; font-style:italic; color:var(--ink-soft);">Keeping every batch, test, and doubt session on track.</p>
+            </div>
+        </div>
+    </section>
+
+    <section style="background:var(--paper); border-top:1px solid var(--line); border-bottom:1px solid var(--line);">
+        <span class="eyebrow-center">The ICI Difference</span>
+        <div class="section-title">Why Choose Iqbal Coaching Institute?</div>
+        <div class="usp-grid fade-in visible">
+            <div class="usp-card"><h4>👁️ Personal Mentorship</h4><p>Every student receives individual attention, progress tracking, and regular counselling.</p></div>
+            <div class="usp-card"><h4>📚 Study Material &amp; Notes</h4><p>Well-researched printed notes and daily practice sheets designed by experts.</p></div>
+            <div class="usp-card"><h4>📊 Structured Test Series</h4><p>Weekly mock tests with detailed analysis, shortcuts, and tips that boosted scores to 98.8%.</p></div>
+            <div class="usp-card"><h4>❓ 24/7 Doubt Clearing</h4><p>Online doubt group + after-class sessions ensure no question remains unanswered.</p></div>
+            <div class="usp-card"><h4>🧠 Counselling Sessions</h4><p>Stress management, career guidance, and confidence building for students and parents.</p></div>
+            <div class="usp-card"><h4>🏫 Community Environment</h4><p>We are more than a tuition center – we are a family that supports every learner.</p></div>
+        </div>
+    </section>
+
+    <section id="courses">
+        <span class="eyebrow-center">Programs</span>
+        <div class="section-title">Our Courses</div>
+        <div class="course-grid fade-in visible">
+            <div class="course-card">
+                <h3>Class 8th – 10th</h3>
+                <ul>
+                    <li>All subjects (CBSE/JKBOSE)</li>
+                    <li>Concept clarity &amp; basics</li>
+                    <li>Daily practice &amp; homework help</li>
+                    <li>Regular parent-teacher updates</li>
+                    <li>Bilingual (Hinglish) teaching</li>
+                </ul>
+            </div>
+            <div class="course-card">
+                <h3>Class 11th – 12th</h3>
+                <ul>
+                    <li>Arts &amp; Commerce streams</li>
+                    <li>Accountancy, Economics, History etc.</li>
+                    <li>Board exam focused training</li>
+                    <li>Answer writing skills</li>
+                    <li>Personal career mentorship</li>
+                </ul>
+            </div>
+            <div class="course-card">
+                <h3>English Language Course</h3>
+                <ul>
+                    <li>3‑month special program</li>
+                    <li>Spoken &amp; written English</li>
+                    <li>Public speaking &amp; confidence</li>
+                    <li>Grammar &amp; vocabulary building</li>
+                    <li>Open to all age groups</li>
+                </ul>
+            </div>
+        </div>
+    </section>
+
+    <section id="faculty" style="background:var(--paper); border-top:1px solid var(--line); border-bottom:1px solid var(--line);">
+        <span class="eyebrow-center">Meet the Team</span>
+        <div class="section-title">Our Dedicated Faculty</div>
+        <div class="faculty-grid fade-in visible" id="facultyContainer"></div>
+        <p style="text-align:center; margin-top:1.5rem; color:var(--ink-soft);">* Photos &amp; names are placeholders – replace them directly in the code.</p>
+    </section>
+
+    <section id="testimonials">
+        <span class="eyebrow-center">Real Results</span>
+        <div class="section-title">What Students &amp; Parents Say</div>
+        <div class="testimonial-grid fade-in visible">
+            <div class="testimonial-card">
+                <div class="stars">⭐⭐⭐⭐⭐</div>
+                <p><em>"Before ICI, I was overwhelmed. Weekly mock tests and performance analysis changed everything. My score improved from 65% to 98.8%. I couldn't have cracked it without their shortcuts and tricks."</em></p>
+                <strong>Aisha</strong><br><small>2025 Session Student</small>
+            </div>
+            <div class="testimonial-card">
+                <div class="stars">⭐⭐⭐⭐⭐</div>
+                <p><em>"The faculty don't just lecture; they mentor. Iqbal Sir and Zubair Sir stayed back to clear doubts. The 24/7 online doubt group was a lifesaver during late-night study."</em></p>
+                <strong>Mansha Maqsood</strong><br><small>Class 10th, Session 2025 (495/500)</small>
+            </div>
+            <div class="testimonial-card">
+                <div class="stars">⭐⭐⭐⭐⭐</div>
+                <p><em>"As a parent, I value the transparency. Automated attendance alerts, monthly progress reports, and easy parent-teacher access. Our daughter's confidence and grades improved dramatically. Salute to Iqbal sir and team."</em></p>
+                <strong>Taj Mohammed</strong><br><small>Parent</small>
+            </div>
+        </div>
+    </section>
+
+    <section id="gallery" style="background:var(--paper); border-top:1px solid var(--line); border-bottom:1px solid var(--line);">
+        <span class="eyebrow-center">Life at ICI</span>
+        <div class="section-title">Campus &amp; Events</div>
+        <div class="gallery-grid fade-in visible" id="galleryContainer"></div>
+        <p style="text-align:center; margin-top:1rem; color:var(--ink-soft);">* Placeholder photos — replace each "img" link in the galleryData list in the code with a real photo URL.</p>
+    </section>
+
+    <section id="faq">
+        <span class="eyebrow-center">Good to Know</span>
+        <div class="section-title">Frequently Asked Questions</div>
+        <div class="fade-in visible">
+            <div class="faq-item">
+                <div class="faq-question">What are the class timings? <span>+</span></div>
+                <div class="faq-answer">Our batches run in morning and evening shifts. Exact timings depend on the class and stream. Please enquire for a personalized schedule.</div>
+            </div>
+            <div class="faq-item">
+                <div class="faq-question">Do you offer demo classes? <span>+</span></div>
+                <div class="faq-answer">Yes! We provide free demo classes so students can experience our teaching methodology before enrolling.</div>
+            </div>
+            <div class="faq-item">
+                <div class="faq-question">Is there any online support? <span>+</span></div>
+                <div class="faq-answer">We have a 24/7 online doubt-clearing group on WhatsApp, and study materials are shared digitally as well.</div>
+            </div>
+            <div class="faq-item">
+                <div class="faq-question">What is the fee structure? <span>+</span></div>
+                <div class="faq-answer">Fees are affordable and vary by course. Please contact us or visit the institute for detailed fee information.</div>
+            </div>
+        </div>
+    </section>
+
+    <section id="contact">
+        <span class="eyebrow-center">Get In Touch</span>
+        <div class="section-title">Contact &amp; Enquiry</div>
+        <div class="contact-container fade-in visible">
+            <div class="contact-info">
+                <h3 style="margin-bottom: 0.6rem;">📍 Visit Us</h3>
+                <p><strong style="color:white;">Iqbal Coaching Institute</strong><br>Parimpora, Adjacent to Post Office<br>Srinagar, J&amp;K – 190017</p>
+                <p style="margin-top:0.8rem;"><strong style="color:white;">📞</strong> +91 9419088099, +91 9906781638</p>
+                <p><strong style="color:white;">✉️</strong> iciparimpora@gmail.com</p>
+                <div class="social-links">
+                    <a href="https://www.youtube.com/@iqbalcoachinginstitute" target="_blank" class="social-link youtube">
+                        <svg viewBox="0 0 24 24"><path d="M23.5 6.2a3.01 3.01 0 00-2.12-2.13C19.5 3.5 12 3.5 12 3.5s-7.5 0-9.38.57A3.01 3.01 0 00.5 6.2 31.6 31.6 0 000 12a31.6 31.6 0 00.5 5.8 3.01 3.01 0 002.12 2.13c1.88.57 9.38.57 9.38.57s7.5 0 9.38-.57a3.01 3.01 0 002.12-2.13A31.6 31.6 0 0024 12a31.6 31.6 0 00-.5-5.8zM9.75 15.02V8.98L15.5 12l-5.75 3.02z"></path></svg>
+                        YouTube
+                    </a>
+                    <a href="https://www.instagram.com/iqbal_coaching_institute/" target="_blank" class="social-link instagram">
+                        <svg viewBox="0 0 24 24"><path d="M12 2.16c3.2 0 3.58.01 4.85.07 1.18.05 1.82.25 2.25.41.56.22.96.48 1.38.9.42.42.68.82.9 1.38.16.43.36 1.07.41 2.25.06 1.27.07 1.65.07 4.85s-.01 3.58-.07 4.85c-.05 1.18-.25 1.82-.41 2.25-.22.56-.48.96-.9 1.38-.42.42-.82.68-1.38.9-.43.16-1.07.36-2.25.41-1.27.06-1.65.07-4.85.07s-3.58-.01-4.85-.07c-1.18-.05-1.82-.25-2.25-.41-.56-.22-.96-.48-1.38-.9-.42-.42-.68-.82-.9-1.38-.16-.43-.36-1.07-.41-2.25-.06-1.27-.07-1.65-.07-4.85s.01-3.58.07-4.85c.05-1.18.25-1.82.41-2.25.22-.56.48-.96.9-1.38.42-.42.82-.68 1.38-.9.43-.16 1.07-.36 2.25-.41C8.42 2.17 8.8 2.16 12 2.16zm0-2.16C8.74 0 8.33.01 7.05.07c-2.4.11-4.04.49-5.48 1.05A7.7 7.7 0 00.9 2.72C.32 3.3.01 3.93.01 4.58c-.56 1.44-.94 3.08-1.05 5.48C-1.1 11.33-1.11 11.74-1.11 15s.01 3.67.07 4.95c.11 2.4.49 4.04 1.05 5.48a7.7 7.7 0 001.71 2.51c.72.72 1.56 1.2 2.51 1.71 1.44.56 3.08.94 5.48 1.05C11.33 30.1 11.74 30.11 15 30.11s3.67-.01 4.95-.07c2.4-.11 4.04-.49 5.48-1.05a7.7 7.7 0 002.51-1.71c.72-.72 1.2-1.56 1.71-2.51.56-1.44.94-3.08 1.05-5.48.06-1.28.07-1.69.07-4.95s-.01-3.67-.07-4.95c-.11-2.4-.49-4.04-1.05-5.48a7.7 7.7 0 00-1.71-2.51c-.72-.72-1.56-1.2-2.51-1.71C25.4.56 23.76.18 21.36.07 20.08.01 19.67 0 16.5 0H12zM12 7.33a7.67 7.67 0 107.67 7.67A7.67 7.67 0 0012 7.33zm0 12.67a5 5 0 110-10 5 5 0 010 10zm9.77-12.64a1.8 1.8 0 11-3.6 0 1.8 1.8 0 013.6 0z"></path></svg>
+                        Instagram
+                    </a>
+                </div>
+                <p><strong style="color:white;">Director:</strong> Mohammad Iqbal Lone</p>
+            </div>
+            <div class="contact-form">
+                <h3 style="color:var(--navy); margin-bottom:1rem;">Enquire Now</h3>
+                <form id="enquiry-form" action="https://script.google.com/macros/s/AKfycbynVymQwX0h3-Hx4X-r8rm3MocPJCRgeT_EF29u7g63WJULmKGR5Nkq0KzONt7oZkNK/exec" method="POST">
+                    <div class="form-group"><label>Student Name *</label><input type="text" name="student_name" required></div>
+                    <div class="form-group"><label>Parent Name *</label><input type="text" name="parent_name" required></div>
+                    <div class="form-group"><label>Phone</label><input type="tel" name="phone"></div>
+                    <div class="form-group">
+                        <label>Class / Course</label>
+                        <select name="course">
+                            <option value="">-- Select --</option>
+                            <option>8th</option><option>9th</option><option>10th</option>
+                            <option>11th Arts</option><option>11th Commerce</option>
+                            <option>12th Arts</option><option>12th Commerce</option>
+                            <option>English Language Course</option>
+                        </select>
+                    </div>
+                    <div class="form-group"><label>Message</label><textarea name="message" rows="3"></textarea></div>
+                    <button type="submit" class="submit-btn">Send Enquiry</button>
+                </form>
+            </div>
+        </div>
+    </section>
+
+    <footer>
+        <p>© 2026 Iqbal Coaching Institute (ICI) | Founded by Mohammad Iqbal Lone</p>
+        <p style="margin-top:0.5rem;"><a href="#home">↑ Back to top</a></p>
+    </footer>
+
+    <script>
+        // Hamburger menu toggle
+        const hamburger = document.getElementById('hamburger');
+        const navMenu = document.getElementById('nav-menu');
+        hamburger.addEventListener('click', () => {
+            hamburger.classList.toggle('active');
+            navMenu.classList.toggle('active');
+        });
+        navMenu.querySelectorAll('a').forEach(link => {
+            link.addEventListener('click', () => {
+                hamburger.classList.remove('active');
+                navMenu.classList.remove('active');
+            });
+        });
+
+        // Counter animation
+        let counterAnimated = false;
+
+        function animateCounter() {
+            if (counterAnimated) return;
+            counterAnimated = true;
+            const counter = document.getElementById('counter');
+            let count = 0;
+            const target = 49;
+            const speed = 30;
+            const update = () => {
+                if (count < target) {
+                    count++;
+                    counter.textContent = count + '+';
+                    setTimeout(update, speed);
+                } else {
+                    counter.textContent = target + '+';
+                }
+            };
+            update();
+        }
+
+        // Scroll‑based fade‑in detection
+        const fadeElements = document.querySelectorAll('.fade-in');
+
+        function checkVisibility() {
+            fadeElements.forEach(el => {
+                const rect = el.getBoundingClientRect();
+                const windowHeight = window.innerHeight || document.documentElement.clientHeight;
+                if (rect.top < windowHeight * 0.8 && rect.bottom > 0) {
+                    el.classList.add('visible');
+                    if (el.querySelector('#counter') && !counterAnimated) {
+                        animateCounter();
+                    }
+                }
+            });
+        }
+
+        window.addEventListener('scroll', checkVisibility);
+        window.addEventListener('load', checkVisibility);
+        checkVisibility();
+
+        // FAQ Accordion
+        document.querySelectorAll('.faq-question').forEach(q => {
+            q.addEventListener('click', () => {
+                const item = q.parentElement;
+                item.classList.toggle('active');
+                const span = q.querySelector('span');
+                span.textContent = item.classList.contains('active') ? '−' : '+';
+            });
+        });
+
+        // Faculty data with updated Wahid Sir photo
+        const facultyData = [
+            { name: 'DR.MEHNAZ KHAN', subject: 'BIOLOGY EXPERT', img: 'https://i.ibb.co/rKFfKmMr/IMG-20260704-WA0009.jpg' },
+            { name: 'MR ZUBAIR', subject: 'HISTORY EXPERT', img: 'https://i.ibb.co/hxcVK683/IMG-20260704-WA0013.jpg' },
+            { name: 'SIR MUHAMMED IQBAL', subject: 'MATHEMATICS & PHYSICS', img: 'https://i.ibb.co/qFCdrdTQ/IMG-20260704-WA0012.jpg' },
+            { name: 'WAHID SIR', subject: 'HOD Commerce department', img: 'https://i.ibb.co/HfZkkcg6/IMG-20260705-WA0011.jpg' },
+            { name: 'AQSA MAM', subject: 'URDU Teacher', img: 'https://i.ibb.co/SDpt4MhZ/IMG-20260704-WA0010.jpg' },
+            { name: 'SALIQ SHABIR', subject: 'ACCOUNTS Expert', img: 'https://i.ibb.co/b58zTXfT/IMG-20260704-WA0016.jpg' },
+            { name: 'KHUSHBOO HAMEED', subject: 'KASHMIRI Teacher', img: 'https://i.ibb.co/j91ywwS9/IMG-20260704-WA0017.jpg' },
+            { name: 'MUSADIQ REHMAN SOFI', subject: 'ENGLISH & SOCIOLOGY Expert', img: 'https://i.ibb.co/1J6FxHQW/IMG-20260704-222603.jpg' }
+        ];
+
+        const facultyContainer = document.getElementById('facultyContainer');
+        facultyContainer.innerHTML = '';
+        facultyData.forEach(t => {
+            const card = document.createElement('div');
+            card.className = 'faculty-card';
+            card.innerHTML = `
+                <img src="${t.img}" alt="${t.name}" style="width:96px;height:96px;border-radius:50%;object-fit:cover;background:#e0e0e0;">
+                <h4>${t.name}</h4>
+                <p>${t.subject}</p>
+            `;
+            facultyContainer.appendChild(card);
+        });
+
+        // Gallery data — 9 slots with your uploaded images
+        const galleryData = [
+            { caption: 'Classroom', img: 'https://i.ibb.co/fGvyWdpr/IMG-20260705-WA0031-1.jpg' },
+            { caption: 'Doubt Session', img: 'https://i.ibb.co/0y4Hv81S/IMG-20260705-WA0032.jpg' },
+            { caption: 'Felicitation', img: 'https://i.ibb.co/kVnccZKm/IMG-20260705-WA0027.jpg' },
+            { caption: 'Annual Day', img: 'https://i.ibb.co/hqtmbYv/IMG-20260705-WA0021.jpg' },
+            { caption: 'Library', img: 'https://i.ibb.co/qMPgWJXB/IMG-20260705-WA0025.jpg' },
+            { caption: 'Test Series', img: 'https://i.ibb.co/DgG64G8Z/IMG-20260705-WA0030.jpg' },
+            { caption: 'Prize Distribution', img: 'https://i.ibb.co/m5xnrNv6/IMG-20260705-WA0019.jpg' },
+            { caption: 'Parent-Teacher Meet', img: 'https://i.ibb.co/FRX1Sfk/IMG-20260705-WA0029.jpg' },
+            { caption: 'Campus View', img: 'https://i.ibb.co/Kz0fh6hg/IMG-20260705-WA0024.jpg' }
+        ];
+
+        const PLACEHOLDER_PHOTO = 'data:image/svg+xml,%3Csvg xmlns="http://www.w3.org/2000/svg" width="400" height="300"%3E%3Crect width="400" height="300" fill="%23e5e0d3"/%3E%3Ctext x="200" y="155" text-anchor="middle" fill="%238a8272" font-size="20" font-family="sans-serif"%3EAdd photo%3C/text%3E%3C/svg%3E';
+
+        const galleryContainer = document.getElementById('galleryContainer');
+        galleryContainer.innerHTML = '';
+        galleryData.forEach(g => {
+            const item = document.createElement('div');
+            item.className = 'gallery-item';
+            item.title = g.caption;
+            item.innerHTML = `<img src="${g.img || PLACEHOLDER_PHOTO}" alt="${g.caption}">`;
+            galleryContainer.appendChild(item);
+        });
+
+        // Chatbot logic
+        const faqDB = {
+            timings: "Our batches run in morning and evening shifts. Exact timings depend on the class and stream. Please enquire for a personalized schedule.",
+            demo: "Yes! We provide free demo classes so students can experience our teaching methodology before enrolling.",
+            "online support": "We have a 24/7 online doubt-clearing group on WhatsApp, and study materials are shared digitally as well.",
+            fees: "Fees are affordable and vary by course. Please contact us or visit the institute for detailed fee information.",
+            contact: "You can call us at +91 9419088099 or visit Parimpora, Adjacent to Post Office, Srinagar.",
+            address: "Iqbal Coaching Institute, Parimpora, Adjacent to Post Office, Srinagar, J&K - 190017."
+        };
+
+        const suggestionList = [
+            { key: 'timings', text: 'Class timings?' },
+            { key: 'demo', text: 'Demo classes?' },
+            { key: 'online support', text: 'Online support?' },
+            { key: 'fees', text: 'Fee structure?' },
+            { key: 'contact', text: 'Contact details?' },
+            { key: 'address', text: 'Address?' }
+        ];
+
+        const chatToggle = document.getElementById('chatbotToggle');
+        const chatWindow = document.getElementById('chatbotWindow');
+        const chatClose = document.getElementById('chatbotClose');
+        const chatMessages = document.getElementById('chatbotMessages');
+        const chatInput = document.getElementById('chatbotInput');
+        const chatSend = document.getElementById('chatbotSend');
+        const suggestionsSlider = document.getElementById('suggestionsSlider');
+        const scrollLeftBtn = document.getElementById('scrollLeft');
+        const scrollRightBtn = document.getElementById('scrollRight');
+
+        suggestionsSlider.innerHTML = '';
+        suggestionList.forEach(item => {
+            const btn = document.createElement('button');
+            btn.textContent = item.text;
+            btn.setAttribute('data-key', item.key);
+            btn.addEventListener('click', () => {
+                addMessage(item.text, 'user');
+                setTimeout(() => {
+                    const reply = faqDB[item.key] || "I'll find that out for you. Feel free to call us!";
+                    addMessage(reply, 'bot');
+                }, 500);
+            });
+            suggestionsSlider.appendChild(btn);
+        });
+
+        chatToggle.addEventListener('click', () => {
+            chatWindow.classList.toggle('open');
+        });
+        chatClose.addEventListener('click', () => {
+            chatWindow.classList.remove('open');
+        });
+
+        scrollLeftBtn.addEventListener('click', () => {
+            suggestionsSlider.scrollBy({ left: -120, behavior: 'smooth' });
+        });
+        scrollRightBtn.addEventListener('click', () => {
+            suggestionsSlider.scrollBy({ left: 120, behavior: 'smooth' });
+        });
+
+        function addMessage(text, sender) {
+            const msgDiv = document.createElement('div');
+            msgDiv.classList.add('chatbot-message');
+            msgDiv.classList.add(sender === 'bot' ? 'bot-message' : 'user-message');
+            msgDiv.textContent = text;
+            chatMessages.appendChild(msgDiv);
+            chatMessages.scrollTop = chatMessages.scrollHeight;
+        }
+
+        function getBotResponse(userText) {
+            const text = userText.toLowerCase();
+            if (text.includes('timing') || text.includes('time') || text.includes('schedule')) return faqDB.timings;
+            if (text.includes('demo') || text.includes('trial')) return faqDB.demo;
+            if (text.includes('online') || text.includes('support') || text.includes('whatsapp')) return faqDB["online support"];
+            if (text.includes('fee') || text.includes('price') || text.includes('cost')) return faqDB.fees;
+            if (text.includes('contact') || text.includes('phone') || text.includes('call')) return faqDB.contact;
+            if (text.includes('address') || text.includes('location') || text.includes('where')) return faqDB.address;
+            return "I'm sorry, I didn't quite understand that. You can ask about timings, demo classes, online support, fees, or contact details. Or browse the suggestions above.";
+        }
+
+        function handleUserMessage(text) {
+            if (!text.trim()) return;
+            addMessage(text, 'user');
+            setTimeout(() => {
+                const reply = getBotResponse(text);
+                addMessage(reply, 'bot');
+            }, 500);
+        }
+
+        chatSend.addEventListener('click', () => {
+            const text = chatInput.value;
+            handleUserMessage(text);
+            chatInput.value = '';
+        });
+        chatInput.addEventListener('keypress', (e) => {
+            if (e.key === 'Enter') {
+                const text = chatInput.value;
+                handleUserMessage(text);
+                chatInput.value = '';
+            }
+        });
+
+        /* =========================================================
+           LIVE NEWS TICKER — powered by a public Google Sheet
+           ---------------------------------------------------------
+           HOW TO SET THIS UP (no backend/server needed):
+           1. Create a Google Sheet. In row 1 put headers: Date | News | Link (Link is optional).
+              Example row: 2026-07-05 | Admissions open for 2026-27 session | (leave blank or a URL)
+           2. File → Share → "Anyone with the link" → Viewer.
+           3. Copy the Sheet ID from its URL:
+              https://docs.google.com/spreadsheets/d/  >>SHEET_ID_GOES_HERE<<  /edit
+           4. If your news is on a tab other than the first one, also grab its "gid"
+              from the URL after you click that tab (e.g. ...#gid=123456789).
+           5. Paste your Sheet ID (and gid, if needed) into the two constants below.
+           6. That's it — add a new row to the sheet any time and the site updates
+              automatically the next time someone loads the page (no redeploy needed).
+           ========================================================= */
+        const NEWS_SHEET_ID = '1xe_M2OjN4z-AlX_Uik0rl6j9PN-j6mX_y2LbdFnSLPs';
+        const NEWS_SHEET_GID = '0'; // change if your news lives on a different tab
+
+        // Shown until the sheet is connected, or if the fetch fails for any reason.
+        const FALLBACK_NEWS = [
+            { date: '', text: 'Connect a Google Sheet above to show live news here.' },
+            { date: '', text: 'Admissions open for the 2026–27 session — enquire now.' },
+            { date: '', text: 'Weekly mock test series continues every Saturday.' }
+        ];
+
+        function parseGvizDate(raw) {
+            // gviz returns date cells as strings like "Date(2026,0,5)"
+            const m = /^Date\((\d+),(\d+),(\d+)\)$/.exec(raw || '');
+            if (!m) return raw || '';
+            const [, y, mo, d] = m;
+            const dt = new Date(Number(y), Number(mo), Number(d));
+            return dt.toLocaleDateString('en-IN', { day: 'numeric', month: 'short', year: 'numeric' });
+        }
+
+        function renderNews(items) {
+            const track = document.getElementById('newsTrack');
+            if (!items || !items.length) items = FALLBACK_NEWS;
+            // Duplicate the list so the marquee loop feels continuous.
+            const doubled = items.concat(items);
+            track.innerHTML = doubled.map(n => {
+                const dateHtml = n.date ? `<span class="date">${n.date}</span>` : '';
+                const body = n.link ?
+                    `<a href="${n.link}" target="_blank" style="color:inherit;text-decoration:underline;">${n.text}</a>` :
+                    n.text;
+                return `<span class="item">${dateHtml}${body}</span>`;
+            }).join('');
+        }
+
+        async function fetchNewsFromSheet() {
+            if (!NEWS_SHEET_ID || NEWS_SHEET_ID.startsWith('PASTE_')) {
+                renderNews(FALLBACK_NEWS);
+                return;
+            }
+            const url = `https://docs.google.com/spreadsheets/d/${NEWS_SHEET_ID}/gviz/tq?tqx=out:json&gid=${NEWS_SHEET_GID}`;
+            try {
+                const res = await fetch(url);
+                if (!res.ok) throw new Error('Sheet request failed: ' + res.status);
+                const raw = await res.text();
+                const jsonText = raw.substring(raw.indexOf('(') + 1, raw.lastIndexOf(')'));
+                const data = JSON.parse(jsonText);
+                const rows = (data.table && data.table.rows) || [];
+                const items = rows
+                    .map(r => {
+                        const cells = r.c || [];
+                        const date = cells[0] ? parseGvizDate(cells[0].v) : '';
+                        const text = cells[1] ? (cells[1].f || cells[1].v) : '';
+                        const link = cells[2] ? (cells[2].v || '') : '';
+                        return text ? { date, text, link } : null;
+                    })
+                    .filter(Boolean);
+                renderNews(items.length ? items : FALLBACK_NEWS);
+            } catch (err) {
+                console.warn('News sheet fetch failed, showing fallback news:', err);
+                renderNews(FALLBACK_NEWS);
+            }
+        }
+
+        fetchNewsFromSheet();
+        // Re-check the sheet every 10 minutes so news stays fresh without a page reload.
+        setInterval(fetchNewsFromSheet, 10 * 60 * 1000);
+    </script>
+</body>
+  </html>
