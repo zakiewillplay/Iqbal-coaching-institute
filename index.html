@@ -1750,31 +1750,25 @@
         });
 
         /* =========================================================
-           LIVE NEWS TICKER — FIXED with JSONP (bypasses CORS)
+           NEWS TICKER — Google Sheets via Google Apps Script
            ---------------------------------------------------------
-           Uses Google Sheets API with JSONP callback to fetch news.
-           No backend needed — works entirely in the browser!
+           Fetches live from your Google Sheet every time!
+           Just update the sheet, news updates automatically.
            ========================================================= */
-        const NEWS_SHEET_ID = '1xe_M2OjN4z-AlX_Uik0rl6j9PN-j6mX_y2LbdFnSLPs';
-        const NEWS_SHEET_GID = '0';
+
+        // 🔑 Google Apps Script URL (Connected ✅)
+        const GAS_URL = 'https://script.google.com/macros/s/AKfycbz4fsRMBGGXnngtLOTfuJdzQpW6FJWEqJ54-UJSLrKiTFBuyF6EYNB7JEdkaIsLyqZx/exec';
 
         const FALLBACK_NEWS = [
-            { date: '', text: 'Admissions open for the 2026–27 session — enquire now.' },
-            { date: '', text: 'Weekly mock test series continues every Saturday.' },
-            { date: '', text: 'Join ICI for excellence in academics and mentorship.' }
+            { date: '05 Jul', text: '🎉 Admissions open for 2026–27 session — Limited seats available' },
+            { date: '30 Jun', text: '📊 Weekly mock test series continues every Saturday at 9 AM' },
+            { date: '25 Jun', text: '🏆 Congratulations to 49+ students who scored 400+ in boards!' }
         ];
-
-        function parseGvizDate(raw) {
-            const m = /^Date\((\d+),(\d+),(\d+)\)$/.exec(raw || '');
-            if (!m) return raw || '';
-            const [, y, mo, d] = m;
-            const dt = new Date(Number(y), Number(mo), Number(d));
-            return dt.toLocaleDateString('en-IN', { day: 'numeric', month: 'short', year: 'numeric' });
-        }
 
         function renderNews(items) {
             const track = document.getElementById('newsTrack');
             if (!items || !items.length) items = FALLBACK_NEWS;
+            
             const doubled = items.concat(items);
             track.innerHTML = doubled.map(n => {
                 const dateHtml = n.date ? `<span class="date">${n.date}</span>` : '';
@@ -1785,47 +1779,38 @@
             }).join('');
         }
 
-        // JSONP callback function (must be global)
-        window.newsCallback = function(data) {
-            try {
-                const rows = (data.table && data.table.rows) || [];
-                const items = rows
-                    .map(r => {
-                        const cells = r.c || [];
-                        const date = cells[0] ? parseGvizDate(cells[0].v) : '';
-                        const text = cells[1] ? (cells[1].f || cells[1].v) : '';
-                        const link = cells[2] ? (cells[2].v || '') : '';
-                        return text ? { date, text, link } : null;
-                    })
-                    .filter(Boolean);
-                renderNews(items.length ? items : FALLBACK_NEWS);
-            } catch (err) {
-                console.warn('Error parsing news sheet:', err);
-                renderNews(FALLBACK_NEWS);
-            }
-        };
-
-        function fetchNewsFromSheet() {
-            if (!NEWS_SHEET_ID || NEWS_SHEET_ID.startsWith('PASTE_')) {
+        async function fetchNewsFromSheet() {
+            if (!GAS_URL || GAS_URL === 'PASTE_YOUR_DEPLOYMENT_URL_HERE') {
+                console.warn('⚠️ No Google Apps Script URL configured');
                 renderNews(FALLBACK_NEWS);
                 return;
             }
 
-            // Use JSONP to bypass CORS
-            const url = `https://docs.google.com/spreadsheets/d/${NEWS_SHEET_ID}/gviz/tq?tqx=out:json&gid=${NEWS_SHEET_GID}&callback=newsCallback`;
-            
-            const script = document.createElement('script');
-            script.src = url;
-            script.onerror = () => {
-                console.warn('Failed to fetch news sheet, showing fallback');
+            try {
+                console.log('📡 Fetching news from Google Sheet...');
+                const response = await fetch(GAS_URL);
+                
+                if (!response.ok) throw new Error(`HTTP ${response.status}`);
+                
+                const items = await response.json();
+                console.log(`✅ Loaded ${items.length} news items`);
+                renderNews(items);
+            } catch (err) {
+                console.warn('⚠️ Failed to fetch news:', err.message);
                 renderNews(FALLBACK_NEWS);
-            };
-            document.head.appendChild(script);
+            }
         }
 
-        fetchNewsFromSheet();
-        // Refresh every 10 minutes
-        setInterval(fetchNewsFromSheet, 10 * 60 * 1000);
+        // Fetch on page load
+        window.addEventListener('load', fetchNewsFromSheet);
+        if (document.readyState === 'loading') {
+            document.addEventListener('DOMContentLoaded', fetchNewsFromSheet);
+        } else {
+            fetchNewsFromSheet();
+        }
+
+        // Refresh every 5 minutes
+        setInterval(fetchNewsFromSheet, 5 * 60 * 1000);
     </script>
 </body>
 </html>
