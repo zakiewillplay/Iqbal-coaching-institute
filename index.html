@@ -86,6 +86,98 @@
             }
         }
 
+        /* ======== ANIMATIONS ======== */
+        @keyframes slideInDown {
+            from {
+                opacity: 0;
+                transform: translateY(-30px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        @keyframes slideInUp {
+            from {
+                opacity: 0;
+                transform: translateY(30px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        @keyframes slideInLeft {
+            from {
+                opacity: 0;
+                transform: translateX(-40px);
+            }
+            to {
+                opacity: 1;
+                transform: translateX(0);
+            }
+        }
+
+        @keyframes slideInRight {
+            from {
+                opacity: 0;
+                transform: translateX(40px);
+            }
+            to {
+                opacity: 1;
+                transform: translateX(0);
+            }
+        }
+
+        @keyframes scaleIn {
+            from {
+                opacity: 0;
+                transform: scale(0.9);
+            }
+            to {
+                opacity: 1;
+                transform: scale(1);
+            }
+        }
+
+        @keyframes float {
+            0%, 100% {
+                transform: translateY(0px);
+            }
+            50% {
+                transform: translateY(-10px);
+            }
+        }
+
+        @keyframes glow {
+            0%, 100% {
+                box-shadow: 0 0 20px rgba(200, 155, 60, 0.3);
+            }
+            50% {
+                box-shadow: 0 0 35px rgba(200, 155, 60, 0.6);
+            }
+        }
+
+        @keyframes shimmer {
+            0% {
+                background-position: -1000px 0;
+            }
+            100% {
+                background-position: 1000px 0;
+            }
+        }
+
+        @keyframes bounce {
+            0%, 100% {
+                transform: translateY(0);
+            }
+            50% {
+                transform: translateY(-8px);
+            }
+        }
+
         header {
             background: var(--navy-deep);
             color: white;
@@ -97,12 +189,14 @@
             top: 0;
             z-index: 100;
             border-bottom: 1px solid rgba(200, 155, 60, 0.25);
+            animation: slideInDown 0.6s ease;
         }
 
         .logo-area {
             display: flex;
             align-items: center;
             gap: 0.9rem;
+            animation: slideInLeft 0.7s ease;
         }
 
         .logo-img {
@@ -119,6 +213,11 @@
             overflow: hidden;
             border: 2px solid var(--gold);
             flex-shrink: 0;
+            transition: transform 0.3s ease;
+        }
+
+        .logo-img:hover {
+            transform: rotate(10deg) scale(1.08);
         }
 
         .logo-img img {
@@ -187,6 +286,7 @@
             flex-direction: column;
             gap: 0.3rem;
             box-shadow: 0 10px 24px rgba(0, 0, 0, 0.25);
+            animation: slideInDown 0.3s ease;
         }
 
         nav.active {
@@ -200,10 +300,12 @@
             padding: 0.6rem 0;
             border-bottom: 1px solid rgba(255, 255, 255, 0.12);
             font-size: 0.95rem;
+            transition: color 0.3s ease, padding-left 0.3s ease;
         }
 
         nav a:hover {
             color: var(--gold-light);
+            padding-left: 0.5rem;
         }
 
         .hero {
@@ -225,6 +327,7 @@
             opacity: 0.16;
             z-index: 0;
             pointer-events: none;
+            animation: float 6s ease-in-out infinite;
         }
 
         .hero>* {
@@ -243,6 +346,7 @@
             padding: 0.35rem 0.9rem;
             border-radius: 999px;
             margin-bottom: 1.4rem;
+            animation: slideInDown 0.6s ease 0.1s both;
         }
 
         .hero h1 {
@@ -252,6 +356,7 @@
             max-width: 780px;
             margin: 0 auto 0.6rem;
             line-height: 1.25;
+            animation: slideInUp 0.7s ease 0.2s both;
         }
 
         .hero .motto {
@@ -259,6 +364,7 @@
             color: var(--gold-light);
             margin-bottom: 1.6rem;
             letter-spacing: 0.02em;
+            animation: slideInUp 0.7s ease 0.3s both;
         }
 
         .news-ticker {
@@ -271,6 +377,7 @@
             border-radius: 999px;
             overflow: hidden;
             backdrop-filter: blur(6px);
+            animation: slideInUp 0.7s ease 0.4s both;
         }
 
         .news-ticker .tag {
@@ -351,6 +458,7 @@
             max-width: 680px;
             margin: 0 auto 1.8rem;
             opacity: 0.88;
+            animation: slideInUp 0.7s ease 0.35s both;
         }
 
         .counter-box {
@@ -361,6 +469,12 @@
             display: inline-block;
             margin-top: 0.5rem;
             backdrop-filter: blur(5px);
+            animation: slideInUp 0.7s ease 0.4s both;
+            transition: all 0.3s ease;
+        }
+
+        .counter-box:hover {
+            animation: glow 2s infinite;
         }
 
         .counter-box .number {
@@ -392,11 +506,17 @@
             transition: background 0.3s, transform 0.2s, box-shadow 0.3s;
             margin: 0.4rem;
             box-shadow: 0 8px 20px rgba(200, 155, 60, 0.25);
+            animation: scaleIn 0.6s ease 0.5s both;
         }
 
         .btn:hover {
             background: var(--gold-light);
-            transform: translateY(-2px);
+            transform: translateY(-3px);
+            box-shadow: 0 12px 30px rgba(200, 155, 60, 0.4);
+        }
+
+        .btn:active {
+            transform: translateY(-1px);
         }
 
         .btn-outline {
@@ -426,6 +546,7 @@
             text-transform: uppercase;
             color: var(--gold);
             margin-bottom: 0.6rem;
+            animation: slideInDown 0.5s ease;
         }
 
         .section-title {
@@ -435,6 +556,7 @@
             margin-bottom: 2.6rem;
             color: var(--navy);
             position: relative;
+            animation: slideInUp 0.6s ease 0.1s both;
         }
 
         .section-title::after {
@@ -445,6 +567,7 @@
             display: block;
             margin: 0.6rem auto 0;
             border-radius: 2px;
+            animation: scaleIn 0.6s ease 0.3s both;
         }
 
         .about-grid {
@@ -457,6 +580,7 @@
         .about-text {
             flex: 1 1 400px;
             color: var(--ink-soft);
+            animation: slideInLeft 0.7s ease;
         }
 
         .about-text strong {
@@ -471,6 +595,13 @@
             text-align: center;
             border: 1px solid var(--line);
             box-shadow: 0 12px 30px rgba(16, 37, 74, 0.06);
+            animation: slideInRight 0.7s ease;
+            transition: all 0.3s ease;
+        }
+
+        .founder-card:hover {
+            transform: translateY(-8px);
+            box-shadow: 0 20px 45px rgba(16, 37, 74, 0.15);
         }
 
         .founder-card img {
@@ -480,6 +611,11 @@
             object-fit: cover;
             border: 4px solid var(--gold);
             margin-bottom: 1rem;
+            transition: transform 0.3s ease;
+        }
+
+        .founder-card:hover img {
+            transform: scale(1.08) rotate(5deg);
         }
 
         .founder-card h4 {
@@ -502,12 +638,14 @@
             border-top: 1px solid var(--line);
             border-right: 1px solid var(--line);
             border-bottom: 1px solid var(--line);
-            transition: all 0.3s;
+            transition: all 0.3s ease;
+            animation: slideInUp 0.6s ease;
         }
 
         .usp-card:hover {
             box-shadow: 0 14px 28px rgba(16, 37, 74, 0.08);
-            transform: translateY(-3px);
+            transform: translateY(-6px);
+            border-left-color: var(--gold-light);
         }
 
         .usp-card h4 {
@@ -534,12 +672,13 @@
             border-radius: 18px;
             padding: 2rem;
             transition: 0.3s;
+            animation: slideInUp 0.6s ease;
         }
 
         .course-card:hover {
-            transform: translateY(-6px);
+            transform: translateY(-8px);
             box-shadow: 0 20px 34px rgba(16, 37, 74, 0.1);
-            border-color: transparent;
+            border-color: var(--gold);
         }
 
         .course-card h3 {
@@ -557,6 +696,11 @@
 
         .course-card ul li {
             padding: 0.25rem 0;
+            transition: transform 0.2s ease;
+        }
+
+        .course-card ul li:hover {
+            transform: translateX(5px);
         }
 
         .course-card ul li::before {
@@ -572,6 +716,10 @@
             text-align: center;
         }
 
+        .faculty-card {
+            animation: scaleIn 0.6s ease;
+        }
+
         .faculty-card img {
             width: 96px;
             height: 96px;
@@ -580,6 +728,13 @@
             background: #e0e0e0;
             margin-bottom: 0.8rem;
             border: 3px solid var(--gold-light);
+            transition: all 0.3s ease;
+        }
+
+        .faculty-card:hover img {
+            transform: scale(1.12) rotate(-8deg);
+            border-color: var(--gold);
+            box-shadow: 0 8px 20px rgba(200, 155, 60, 0.3);
         }
 
         .faculty-card h4 {
@@ -605,6 +760,14 @@
             border-radius: 16px;
             border: 1px solid var(--line);
             border-top: 3px solid var(--gold);
+            animation: slideInUp 0.6s ease;
+            transition: all 0.3s ease;
+        }
+
+        .testimonial-card:hover {
+            transform: translateY(-6px);
+            box-shadow: 0 16px 32px rgba(16, 37, 74, 0.12);
+            border-top-color: var(--gold-light);
         }
 
         .testimonial-card p {
@@ -614,6 +777,7 @@
         .stars {
             color: var(--gold);
             margin-bottom: 0.8rem;
+            animation: bounce 1s ease infinite;
         }
 
         .faq-item {
@@ -622,6 +786,7 @@
             border-radius: 12px;
             margin-bottom: 1rem;
             overflow: hidden;
+            animation: slideInUp 0.6s ease;
         }
 
         .faq-question {
@@ -633,6 +798,12 @@
             justify-content: space-between;
             align-items: center;
             color: var(--navy);
+            transition: all 0.3s ease;
+        }
+
+        .faq-question:hover {
+            background: #ebe5d5;
+            padding-left: 1.6rem;
         }
 
         .faq-answer {
@@ -646,6 +817,7 @@
         .faq-item.active .faq-answer {
             max-height: 200px;
             padding: 1.1rem 1.3rem;
+            animation: slideInDown 0.3s ease;
         }
 
         .gallery-grid {
@@ -663,12 +835,24 @@
             justify-content: center;
             color: #8a8272;
             overflow: hidden;
+            animation: scaleIn 0.6s ease;
+            transition: all 0.3s ease;
+        }
+
+        .gallery-item:hover {
+            transform: scale(1.05);
+            box-shadow: 0 12px 28px rgba(16, 37, 74, 0.15);
         }
 
         .gallery-item img {
             width: 100%;
             height: 100%;
             object-fit: cover;
+            transition: transform 0.3s ease;
+        }
+
+        .gallery-item:hover img {
+            transform: scale(1.1);
         }
 
         .contact-container {
@@ -683,6 +867,7 @@
             color: white;
             padding: 2.2rem;
             border-radius: 18px;
+            animation: slideInLeft 0.7s ease;
         }
 
         .contact-info h3 {
@@ -698,6 +883,7 @@
             padding: 2.2rem;
             border-radius: 18px;
             border: 1px solid var(--line);
+            animation: slideInRight 0.7s ease;
         }
 
         .form-group {
@@ -721,6 +907,7 @@
             border-radius: 8px;
             font-size: 1rem;
             background: white;
+            transition: all 0.3s ease;
         }
 
         .form-group input:focus,
@@ -728,6 +915,8 @@
         .form-group textarea:focus {
             outline: 2px solid var(--gold);
             outline-offset: 1px;
+            transform: translateY(-2px);
+            box-shadow: 0 6px 16px rgba(200, 155, 60, 0.2);
         }
 
         .submit-btn {
@@ -739,10 +928,13 @@
             border-radius: 8px;
             font-weight: bold;
             cursor: pointer;
+            transition: all 0.3s ease;
         }
 
         .submit-btn:hover {
             background: var(--navy-soft);
+            transform: translateY(-2px);
+            box-shadow: 0 8px 20px rgba(16, 37, 74, 0.2);
         }
 
         footer {
@@ -752,11 +944,17 @@
             padding: 2rem;
             margin-top: 2rem;
             font-size: 0.9rem;
+            animation: slideInUp 0.6s ease;
         }
 
         footer a {
             color: var(--gold-light);
             text-decoration: none;
+            transition: color 0.3s ease;
+        }
+
+        footer a:hover {
+            color: white;
         }
 
         .fade-in {
@@ -790,6 +988,7 @@
             color: white;
             transition: all 0.3s ease;
             box-shadow: 0 2px 6px rgba(0, 0, 0, 0.1);
+            animation: slideInUp 0.6s ease;
         }
 
         .social-link svg {
@@ -800,8 +999,8 @@
         }
 
         .social-link:hover {
-            transform: translateY(-2px);
-            box-shadow: 0 4px 12px rgba(0, 0, 0, 0.15);
+            transform: translateY(-4px) scale(1.08);
+            box-shadow: 0 6px 16px rgba(0, 0, 0, 0.2);
         }
 
         .social-link.youtube {
@@ -813,7 +1012,7 @@
         }
 
         .social-link:hover svg {
-            transform: scale(1.1);
+            transform: scale(1.2) rotate(10deg);
         }
 
         @media (max-width: 600px) {
@@ -844,10 +1043,12 @@
             display: flex;
             align-items: center;
             justify-content: center;
-            transition: transform 0.3s;
+            transition: transform 0.3s, box-shadow 0.3s;
+            animation: bounce 2s infinite;
         }
         .chatbot-toggle:hover {
-            transform: scale(1.08);
+            transform: scale(1.12);
+            box-shadow: 0 8px 28px rgba(200, 155, 60, 0.4);
         }
 
         .chatbot-window {
@@ -865,6 +1066,7 @@
             overflow: hidden;
             z-index: 1000;
             border: 1px solid var(--line);
+            animation: slideInUp 0.4s ease;
         }
         .chatbot-window.open {
             display: flex;
@@ -885,6 +1087,11 @@
             color: white;
             font-size: 1.5rem;
             cursor: pointer;
+            transition: transform 0.3s;
+        }
+
+        .chatbot-header button:hover {
+            transform: rotate(90deg);
         }
 
         .chatbot-messages {
@@ -903,6 +1110,7 @@
             border-radius: 12px;
             font-size: 0.9rem;
             line-height: 1.4;
+            animation: slideInUp 0.3s ease;
         }
         .bot-message {
             background: #eee9db;
@@ -947,10 +1155,12 @@
             cursor: pointer;
             transition: 0.2s;
             white-space: nowrap;
+            animation: slideInUp 0.3s ease;
         }
         .suggestions-slider button:hover {
             background: var(--navy);
             color: white;
+            transform: translateY(-2px);
         }
 
         .slider-arrow {
@@ -961,9 +1171,11 @@
             padding: 0 0.3rem;
             color: var(--navy);
             flex: 0 0 auto;
+            transition: all 0.3s;
         }
         .slider-arrow:hover {
             color: var(--gold);
+            transform: scale(1.2);
         }
 
         .chatbot-input-area {
@@ -979,7 +1191,14 @@
             padding: 0.5rem 1rem;
             font-size: 0.9rem;
             outline: none;
+            transition: all 0.3s;
         }
+
+        .chatbot-input-area input:focus {
+            border-color: var(--gold);
+            box-shadow: 0 0 8px rgba(200, 155, 60, 0.2);
+        }
+
         .chatbot-input-area button {
             background: var(--gold);
             color: var(--navy-deep);
@@ -989,16 +1208,18 @@
             margin-left: 0.5rem;
             font-weight: bold;
             cursor: pointer;
+            transition: all 0.3s;
+        }
+
+        .chatbot-input-area button:hover {
+            background: var(--gold-light);
+            transform: translateY(-2px);
         }
 
         @media (prefers-reduced-motion: reduce) {
-            .news-ticker .track {
-                animation: none;
-            }
-            .fade-in {
-                opacity: 1;
-                transform: none;
-                transition: none;
+            * {
+                animation: none !important;
+                transition: none !important;
             }
         }
 
@@ -1112,12 +1333,12 @@
         <div class="news-ticker" id="newsTicker">
             <div class="tag"><span class="dot"></span><span class="tag-text">Latest&nbsp;News</span></div>
             <div class="track-wrap">
-                <div class="track" id="newsTrack"><span class="item">Connect a Google Sheet above to show live news here.</span><span class="item">Admissions open for the 2026–27 session — enquire now.</span><span class="item">Weekly mock test series continues every Saturday.</span><span class="item">Connect a Google Sheet above to show live news here.</span><span class="item">Admissions open for the 2026–27 session — enquire now.</span><span class="item">Weekly mock test series continues every Saturday.</span></div>
+                <div class="track" id="newsTrack"><span class="item">Loading news from Google Sheets...</span></div>
             </div>
         </div>
 
         <p class="lead">Academic excellence through personal mentorship, test series, doubt sessions, and counselling. Proudly coaching 8th to 12th (Arts &amp; Commerce) since 2005.</p>
-        <div class="counter-box fade-in visible">
+        <div class="counter-box fade-in">
             <div class="number" id="counter">49+</div>
             <div class="label">Students scored 400+ in boards</div>
         </div>
@@ -1130,7 +1351,7 @@
     <section id="about">
         <span class="eyebrow-center">Our Story</span>
         <div class="section-title">Story &amp; Philosophy</div>
-        <div class="about-grid fade-in visible">
+        <div class="about-grid fade-in">
             <div class="about-text">
                 <p><strong>Founded in 2005 by Mohammad Iqbal Lone</strong>, Iqbal Coaching Institute (ICI) started in Parimpora with a mission: education as self-discovery, not just facts. We blend rigorous academics with holistic development, ensuring every student finds confidence and clarity.</p>
                 <p style="margin-top:1rem;">Our motto drives us: <em>"Know thyself, self-realization is half done."</em> With 20+ years of experience, dedicated faculty, and a community-focused environment, we've become a trusted name in Srinagar.</p>
@@ -1153,7 +1374,7 @@
     <section style="background:var(--paper); border-top:1px solid var(--line); border-bottom:1px solid var(--line);">
         <span class="eyebrow-center">The ICI Difference</span>
         <div class="section-title">Why Choose Iqbal Coaching Institute?</div>
-        <div class="usp-grid fade-in visible">
+        <div class="usp-grid fade-in">
             <div class="usp-card"><h4>👁️ Personal Mentorship</h4><p>Every student receives individual attention, progress tracking, and regular counselling.</p></div>
             <div class="usp-card"><h4>📚 Study Material &amp; Notes</h4><p>Well-researched printed notes and daily practice sheets designed by experts.</p></div>
             <div class="usp-card"><h4>📊 Structured Test Series</h4><p>Weekly mock tests with detailed analysis, shortcuts, and tips that boosted scores to 98.8%.</p></div>
@@ -1166,7 +1387,7 @@
     <section id="courses">
         <span class="eyebrow-center">Programs</span>
         <div class="section-title">Our Courses</div>
-        <div class="course-grid fade-in visible">
+        <div class="course-grid fade-in">
             <div class="course-card">
                 <h3>Class 8th – 10th</h3>
                 <ul>
@@ -1203,14 +1424,14 @@
     <section id="faculty" style="background:var(--paper); border-top:1px solid var(--line); border-bottom:1px solid var(--line);">
         <span class="eyebrow-center">Meet the Team</span>
         <div class="section-title">Our Dedicated Faculty</div>
-        <div class="faculty-grid fade-in visible" id="facultyContainer"></div>
+        <div class="faculty-grid fade-in" id="facultyContainer"></div>
         <p style="text-align:center; margin-top:1.5rem; color:var(--ink-soft);">* Photos &amp; names are placeholders – replace them directly in the code.</p>
     </section>
 
     <section id="testimonials">
         <span class="eyebrow-center">Real Results</span>
         <div class="section-title">What Students &amp; Parents Say</div>
-        <div class="testimonial-grid fade-in visible">
+        <div class="testimonial-grid fade-in">
             <div class="testimonial-card">
                 <div class="stars">⭐⭐⭐⭐⭐</div>
                 <p><em>"Before ICI, I was overwhelmed. Weekly mock tests and performance analysis changed everything. My score improved from 65% to 98.8%. I couldn't have cracked it without their shortcuts and tricks."</em></p>
@@ -1232,14 +1453,14 @@
     <section id="gallery" style="background:var(--paper); border-top:1px solid var(--line); border-bottom:1px solid var(--line);">
         <span class="eyebrow-center">Life at ICI</span>
         <div class="section-title">Campus &amp; Events</div>
-        <div class="gallery-grid fade-in visible" id="galleryContainer"></div>
+        <div class="gallery-grid fade-in" id="galleryContainer"></div>
         <p style="text-align:center; margin-top:1rem; color:var(--ink-soft);">* Placeholder photos — replace each "img" link in the galleryData list in the code with a real photo URL.</p>
     </section>
 
     <section id="faq">
         <span class="eyebrow-center">Good to Know</span>
         <div class="section-title">Frequently Asked Questions</div>
-        <div class="fade-in visible">
+        <div class="fade-in">
             <div class="faq-item">
                 <div class="faq-question">What are the class timings? <span>+</span></div>
                 <div class="faq-answer">Our batches run in morning and evening shifts. Exact timings depend on the class and stream. Please enquire for a personalized schedule.</div>
@@ -1262,7 +1483,7 @@
     <section id="contact">
         <span class="eyebrow-center">Get In Touch</span>
         <div class="section-title">Contact &amp; Enquiry</div>
-        <div class="contact-container fade-in visible">
+        <div class="contact-container fade-in">
             <div class="contact-info">
                 <h3 style="margin-bottom: 0.6rem;">📍 Visit Us</h3>
                 <p><strong style="color:white;">Iqbal Coaching Institute</strong><br>Parimpora, Adjacent to Post Office<br>Srinagar, J&amp;K – 190017</p>
@@ -1375,7 +1596,7 @@
             });
         });
 
-        // Faculty data with updated Wahid Sir photo
+        // Faculty data
         const facultyData = [
             { name: 'DR.MEHNAZ KHAN', subject: 'BIOLOGY EXPERT', img: 'https://i.ibb.co/rKFfKmMr/IMG-20260704-WA0009.jpg' },
             { name: 'MR ZUBAIR', subject: 'HISTORY EXPERT', img: 'https://i.ibb.co/hxcVK683/IMG-20260704-WA0013.jpg' },
@@ -1389,9 +1610,10 @@
 
         const facultyContainer = document.getElementById('facultyContainer');
         facultyContainer.innerHTML = '';
-        facultyData.forEach(t => {
+        facultyData.forEach((t, idx) => {
             const card = document.createElement('div');
             card.className = 'faculty-card';
+            card.style.animationDelay = (idx * 0.08) + 's';
             card.innerHTML = `
                 <img src="${t.img}" alt="${t.name}" style="width:96px;height:96px;border-radius:50%;object-fit:cover;background:#e0e0e0;">
                 <h4>${t.name}</h4>
@@ -1400,7 +1622,7 @@
             facultyContainer.appendChild(card);
         });
 
-        // Gallery data — 9 slots with your uploaded images
+        // Gallery data
         const galleryData = [
             { caption: 'Classroom', img: 'https://i.ibb.co/fGvyWdpr/IMG-20260705-WA0031-1.jpg' },
             { caption: 'Doubt Session', img: 'https://i.ibb.co/0y4Hv81S/IMG-20260705-WA0032.jpg' },
@@ -1417,9 +1639,10 @@
 
         const galleryContainer = document.getElementById('galleryContainer');
         galleryContainer.innerHTML = '';
-        galleryData.forEach(g => {
+        galleryData.forEach((g, idx) => {
             const item = document.createElement('div');
             item.className = 'gallery-item';
+            item.style.animationDelay = (idx * 0.1) + 's';
             item.title = g.caption;
             item.innerHTML = `<img src="${g.img || PLACEHOLDER_PHOTO}" alt="${g.caption}">`;
             galleryContainer.appendChild(item);
@@ -1455,10 +1678,11 @@
         const scrollRightBtn = document.getElementById('scrollRight');
 
         suggestionsSlider.innerHTML = '';
-        suggestionList.forEach(item => {
+        suggestionList.forEach((item, idx) => {
             const btn = document.createElement('button');
             btn.textContent = item.text;
             btn.setAttribute('data-key', item.key);
+            btn.style.animationDelay = (idx * 0.05) + 's';
             btn.addEventListener('click', () => {
                 addMessage(item.text, 'user');
                 setTimeout(() => {
@@ -1526,21 +1750,23 @@
         });
 
         /* =========================================================
-           LIVE NEWS TICKER — powered by a public Google Sheet (JSONP Fix)
+           LIVE NEWS TICKER — FIXED with JSONP (bypasses CORS)
+           ---------------------------------------------------------
+           Uses Google Sheets API with JSONP callback to fetch news.
+           No backend needed — works entirely in the browser!
            ========================================================= */
         const NEWS_SHEET_ID = '1xe_M2OjN4z-AlX_Uik0rl6j9PN-j6mX_y2LbdFnSLPs';
-        const NEWS_SHEET_GID = '0'; 
+        const NEWS_SHEET_GID = '0';
 
         const FALLBACK_NEWS = [
-            { date: '', text: 'Connect a Google Sheet above to show live news here.' },
             { date: '', text: 'Admissions open for the 2026–27 session — enquire now.' },
-            { date: '', text: 'Weekly mock test series continues every Saturday.' }
+            { date: '', text: 'Weekly mock test series continues every Saturday.' },
+            { date: '', text: 'Join ICI for excellence in academics and mentorship.' }
         ];
 
         function parseGvizDate(raw) {
-            if (typeof raw !== 'string') return '';
-            const m = /^Date\((\d+),(\d+),(\d+)\)$/.exec(raw);
-            if (!m) return raw;
+            const m = /^Date\((\d+),(\d+),(\d+)\)$/.exec(raw || '');
+            if (!m) return raw || '';
             const [, y, mo, d] = m;
             const dt = new Date(Number(y), Number(mo), Number(d));
             return dt.toLocaleDateString('en-IN', { day: 'numeric', month: 'short', year: 'numeric' });
@@ -1559,9 +1785,8 @@
             }).join('');
         }
 
-        // The JSONP Callback Function
-        // Google Sheets will call this function and pass the data inside it
-        function processNewsData(data) {
+        // JSONP callback function (must be global)
+        window.newsCallback = function(data) {
             try {
                 const rows = (data.table && data.table.rows) || [];
                 const items = rows
@@ -1575,33 +1800,31 @@
                     .filter(Boolean);
                 renderNews(items.length ? items : FALLBACK_NEWS);
             } catch (err) {
-                console.warn('News sheet parsing failed, showing fallback news:', err);
+                console.warn('Error parsing news sheet:', err);
                 renderNews(FALLBACK_NEWS);
             }
-        }
+        };
 
         function fetchNewsFromSheet() {
             if (!NEWS_SHEET_ID || NEWS_SHEET_ID.startsWith('PASTE_')) {
                 renderNews(FALLBACK_NEWS);
                 return;
             }
+
+            // Use JSONP to bypass CORS
+            const url = `https://docs.google.com/spreadsheets/d/${NEWS_SHEET_ID}/gviz/tq?tqx=out:json&gid=${NEWS_SHEET_GID}&callback=newsCallback`;
             
-            // Create the script tag for JSONP
             const script = document.createElement('script');
-            // Using tqx=responseHandler:processNewsData fixes the CORS issue
-            script.src = `https://docs.google.com/spreadsheets/d/${NEWS_SHEET_ID}/gviz/tq?tqx=responseHandler:processNewsData&gid=${NEWS_SHEET_GID}`;
-            
-            script.onload = () => script.remove(); // Clean up tag after it loads
+            script.src = url;
             script.onerror = () => {
-                console.warn('Failed to load Google Sheet script. Showing fallback.');
+                console.warn('Failed to fetch news sheet, showing fallback');
                 renderNews(FALLBACK_NEWS);
-                script.remove();
             };
-            
-            document.body.appendChild(script);
+            document.head.appendChild(script);
         }
 
         fetchNewsFromSheet();
+        // Refresh every 10 minutes
         setInterval(fetchNewsFromSheet, 10 * 60 * 1000);
     </script>
 </body>
