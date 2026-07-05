@@ -1526,24 +1526,11 @@
         });
 
         /* =========================================================
-           LIVE NEWS TICKER — powered by a public Google Sheet
-           ---------------------------------------------------------
-           HOW TO SET THIS UP (no backend/server needed):
-           1. Create a Google Sheet. In row 1 put headers: Date | News | Link (Link is optional).
-              Example row: 2026-07-05 | Admissions open for 2026-27 session | (leave blank or a URL)
-           2. File → Share → "Anyone with the link" → Viewer.
-           3. Copy the Sheet ID from its URL:
-              https://docs.google.com/spreadsheets/d/  >>SHEET_ID_GOES_HERE<<  /edit
-           4. If your news is on a tab other than the first one, also grab its "gid"
-              from the URL after you click that tab (e.g. ...#gid=123456789).
-           5. Paste your Sheet ID (and gid, if needed) into the two constants below.
-           6. That's it — add a new row to the sheet any time and the site updates
-              automatically the next time someone loads the page (no redeploy needed).
+           LIVE NEWS TICKER — powered by a public Google Sheet (JSONP Fix)
            ========================================================= */
         const NEWS_SHEET_ID = '1xe_M2OjN4z-AlX_Uik0rl6j9PN-j6mX_y2LbdFnSLPs';
-        const NEWS_SHEET_GID = '0'; // change if your news lives on a different tab
+        const NEWS_SHEET_GID = '0'; 
 
-        // Shown until the sheet is connected, or if the fetch fails for any reason.
         const FALLBACK_NEWS = [
             { date: '', text: 'Connect a Google Sheet above to show live news here.' },
             { date: '', text: 'Admissions open for the 2026–27 session — enquire now.' },
@@ -1551,9 +1538,9 @@
         ];
 
         function parseGvizDate(raw) {
-            // gviz returns date cells as strings like "Date(2026,0,5)"
-            const m = /^Date\((\d+),(\d+),(\d+)\)$/.exec(raw || '');
-            if (!m) return raw || '';
+            if (typeof raw !== 'string') return '';
+            const m = /^Date\((\d+),(\d+),(\d+)\)$/.exec(raw);
+            if (!m) return raw;
             const [, y, mo, d] = m;
             const dt = new Date(Number(y), Number(mo), Number(d));
             return dt.toLocaleDateString('en-IN', { day: 'numeric', month: 'short', year: 'numeric' });
@@ -1562,7 +1549,6 @@
         function renderNews(items) {
             const track = document.getElementById('newsTrack');
             if (!items || !items.length) items = FALLBACK_NEWS;
-            // Duplicate the list so the marquee loop feels continuous.
             const doubled = items.concat(items);
             track.innerHTML = doubled.map(n => {
                 const dateHtml = n.date ? `<span class="date">${n.date}</span>` : '';
@@ -1573,18 +1559,10 @@
             }).join('');
         }
 
-        async function fetchNewsFromSheet() {
-            if (!NEWS_SHEET_ID || NEWS_SHEET_ID.startsWith('PASTE_')) {
-                renderNews(FALLBACK_NEWS);
-                return;
-            }
-            const url = `https://docs.google.com/spreadsheets/d/${NEWS_SHEET_ID}/gviz/tq?tqx=out:json&gid=${NEWS_SHEET_GID}`;
+        // The JSONP Callback Function
+        // Google Sheets will call this function and pass the data inside it
+        function processNewsData(data) {
             try {
-                const res = await fetch(url);
-                if (!res.ok) throw new Error('Sheet request failed: ' + res.status);
-                const raw = await res.text();
-                const jsonText = raw.substring(raw.indexOf('(') + 1, raw.lastIndexOf(')'));
-                const data = JSON.parse(jsonText);
                 const rows = (data.table && data.table.rows) || [];
                 const items = rows
                     .map(r => {
@@ -1597,14 +1575,34 @@
                     .filter(Boolean);
                 renderNews(items.length ? items : FALLBACK_NEWS);
             } catch (err) {
-                console.warn('News sheet fetch failed, showing fallback news:', err);
+                console.warn('News sheet parsing failed, showing fallback news:', err);
                 renderNews(FALLBACK_NEWS);
             }
         }
 
+        function fetchNewsFromSheet() {
+            if (!NEWS_SHEET_ID || NEWS_SHEET_ID.startsWith('PASTE_')) {
+                renderNews(FALLBACK_NEWS);
+                return;
+            }
+            
+            // Create the script tag for JSONP
+            const script = document.createElement('script');
+            // Using tqx=responseHandler:processNewsData fixes the CORS issue
+            script.src = `https://docs.google.com/spreadsheets/d/${NEWS_SHEET_ID}/gviz/tq?tqx=responseHandler:processNewsData&gid=${NEWS_SHEET_GID}`;
+            
+            script.onload = () => script.remove(); // Clean up tag after it loads
+            script.onerror = () => {
+                console.warn('Failed to load Google Sheet script. Showing fallback.');
+                renderNews(FALLBACK_NEWS);
+                script.remove();
+            };
+            
+            document.body.appendChild(script);
+        }
+
         fetchNewsFromSheet();
-        // Re-check the sheet every 10 minutes so news stays fresh without a page reload.
         setInterval(fetchNewsFromSheet, 10 * 60 * 1000);
     </script>
 </body>
-  </html>
+</html>
