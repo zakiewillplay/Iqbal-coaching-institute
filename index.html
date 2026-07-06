@@ -237,10 +237,10 @@
             <div class="tag"><span class="dot"></span><span class="tag-text">Latest News</span></div>
             <div class="track-wrap"><div class="track" id="newsTrack">Loading news...</div></div>
         </div>
-        <p class="lead">Academic excellence through personal mentorship, test series, doubt sessions, and counselling. Proudly coaching 8th to 12th (Arts & Commerce) since 2005.</p>
+        <p class="lead">Coaching 8th, 9th and 10th (all subjects). 11th & 12th (Commerce & Humanities).</p>
         <div class="counter-box" id="counterBox">
-            <div class="number" id="counter">49+</div>
-            <div class="label">Students scored 400+ in boards</div>
+            <div class="number" id="counter">60+</div>
+            <div class="label">Students score 450+ marks every session</div>
         </div>
         <div style="margin-top:2rem;">
             <a href="#contact" class="btn">Enquire Now</a>
@@ -289,7 +289,7 @@
             <div class="course-card"><h3>Class 8th – 10th</h3><ul style="list-style:none;padding:0;">
                 <li>✓ All subjects (CBSE/JKBOSE)</li><li>✓ Concept clarity & basics</li><li>✓ Daily practice & homework help</li><li>✓ Regular parent-teacher updates</li><li>✓ Bilingual (Hinglish) teaching</li></ul></div>
             <div class="course-card"><h3>Class 11th – 12th</h3><ul style="list-style:none;padding:0;">
-                <li>✓ Arts & Commerce streams</li><li>✓ Accountancy, Economics, History etc.</li><li>✓ Board exam focused training</li><li>✓ Answer writing skills</li><li>✓ Personal career mentorship</li></ul></div>
+                <li>✓ Commerce & Humanities streams</li><li>✓ Accountancy, Economics, History etc.</li><li>✓ Board exam focused training</li><li>✓ Answer writing skills</li><li>✓ Personal career mentorship</li></ul></div>
             <div class="course-card"><h3>English Language Course</h3><ul style="list-style:none;padding:0;">
                 <li>✓ 3‑month special program</li><li>✓ Spoken & written English</li><li>✓ Public speaking & confidence</li><li>✓ Grammar & vocabulary building</li><li>✓ Open to all age groups</li></ul></div>
         </div>
@@ -418,14 +418,14 @@
             galleryContainer.appendChild(item);
         });
 
-        // ---------- Scroll reveal (MUST come after faculty & gallery) ----------
+        // ---------- Scroll reveal ----------
         const revealElements = document.querySelectorAll('.section-title, .about-text, .founder-card, .usp-card, .course-card, .faculty-card, .testimonial-card, .gallery-item, .faq-item, .contact-info, .contact-form');
         const revealObserver = new IntersectionObserver((entries) => {
             entries.forEach(entry => { if (entry.isIntersecting) { entry.target.classList.add('visible'); revealObserver.unobserve(entry.target); } });
         }, { threshold: 0.15, rootMargin: '0px 0px -50px 0px' });
         revealElements.forEach(el => revealObserver.observe(el));
 
-        // ---------- Counter ----------
+        // ---------- Counter (60+) ----------
         let counterAnimated = false;
         const counterBox = document.getElementById('counterBox');
         const counterEl = document.getElementById('counter');
@@ -433,7 +433,7 @@
             entries.forEach(entry => {
                 if (entry.isIntersecting && !counterAnimated) {
                     counterAnimated = true;
-                    let count = 0; const target = 49; const speed = 30;
+                    let count = 0; const target = 60; const speed = 25;
                     const update = () => { if (count < target) { count++; counterEl.textContent = count + '+'; setTimeout(update, speed); } else { counterEl.textContent = target + '+'; } };
                     update();
                     counterObserver.unobserve(counterBox);
@@ -457,7 +457,7 @@
         const FALLBACK_NEWS = [
             { date: '05 Jul', text: '🎉 Admissions open for 2026–27 session — Limited seats' },
             { date: '30 Jun', text: '📊 Weekly mock test series continues every Saturday' },
-            { date: '25 Jun', text: '🏆 49+ students scored 400+ in boards — Congratulations!' }
+            { date: '25 Jun', text: '🏆 60+ students scored 450+ in boards — Congratulations!' }
         ];
 
         function renderNews(items) {
